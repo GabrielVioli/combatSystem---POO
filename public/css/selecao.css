@@ -1,16 +1,11 @@
 :root {
-    --bg-0: #07040f;
-    --bg-1: #150f2f;
-    --bg-2: #1f153f;
+    --bg: #130f27;
     --panel: #0f0a24;
-    --line: #4de3d9;
-    --line-soft: #2e7cbe;
+    --line: #2f5b81;
     --text: #dff8ff;
-    --text-dim: #93b7c8;
+    --text-dim: #9bb7c6;
     --danger: #f34d7e;
     --mana: #4ca5ff;
-    --gold: #ffd166;
-    --shadow: #000;
 }
 
 * {
@@ -23,48 +18,19 @@ body {
     min-height: 100vh;
     font-family: "Courier New", monospace;
     color: var(--text);
-    background: linear-gradient(180deg, var(--bg-2), var(--bg-1) 50%, var(--bg-0));
+    background: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        repeating-linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.04) 0,
-            rgba(255, 255, 255, 0.04) 1px,
-            transparent 2px,
-            transparent 4px
-        );
-    opacity: 0.12;
-    pointer-events: none;
-}
-
 .screen {
     width: min(1100px, 100%);
-    border: 3px solid var(--line);
+    border: 2px solid var(--line);
     background: var(--panel);
-    box-shadow:
-        0 0 0 3px #001b2d,
-        0 0 0 6px var(--line-soft);
+    box-shadow: 0 0 0 2px #001b2d;
     padding: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-.screen::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 20%, rgba(77, 227, 217, 0.07) 50%, transparent 80%);
-    pointer-events: none;
-    opacity: 0.5;
 }
 
 .top {
@@ -76,20 +42,19 @@ body::before {
 }
 
 .title {
-    font-size: clamp(20px, 3vw, 32px);
-    color: #7ff9e4;
-    text-shadow: 2px 2px 0 var(--shadow);
-    letter-spacing: 2px;
+    font-size: clamp(20px, 3vw, 28px);
+    color: #a7f1ff;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
 .badge {
-    border: 2px solid var(--line);
-    color: var(--line);
-    padding: 6px 10px;
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    padding: 4px 8px;
     font-size: 12px;
     text-transform: uppercase;
-    background: rgba(77, 227, 217, 0.08);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .intro {
@@ -103,35 +68,39 @@ body::before {
     gap: 16px;
 }
 
-.arena {
+.players {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    align-items: stretch;
+    align-items: start;
 }
 
-.pick {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+.player {
+    border: 1px solid #27425c;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.player-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #b8dff3;
+    text-transform: uppercase;
+}
+
+.options {
+    display: grid;
+    gap: 10px;
 }
 
 .fighter {
-    position: relative;
-    border: 2px solid var(--line-soft);
-    background: rgba(0, 12, 27, 0.55);
+    border: 1px solid var(--line);
+    background: rgba(0, 12, 27, 0.45);
     padding: 14px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     min-width: 0;
-    cursor: pointer;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.fighter:hover {
-    border-color: var(--line);
-    box-shadow: 0 0 0 1px rgba(77, 227, 217, 0.3);
 }
 
 .fighter h2 {
@@ -148,11 +117,24 @@ body::before {
     color: var(--danger);
 }
 
+.fighter h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.fighter.mago h3 {
+    color: var(--mana);
+}
+
+.fighter.guerreiro h3 {
+    color: var(--danger);
+}
+
 .chip {
     width: fit-content;
-    border: 1px solid #466f95;
-    color: #9ed2f0;
-    background: rgba(7, 31, 56, 0.8);
+    border: 1px solid #35536f;
+    color: #a8cae1;
+    background: rgba(7, 31, 56, 0.5);
     font-size: 11px;
     text-transform: uppercase;
     padding: 3px 8px;
@@ -174,9 +156,9 @@ body::before {
 }
 
 .stats li {
-    border: 1px solid #29567a;
+    border: 1px solid #264763;
     padding: 8px;
-    background: rgba(10, 25, 45, 0.7);
+    background: rgba(10, 25, 45, 0.5);
 }
 
 .stats strong {
@@ -188,23 +170,46 @@ body::before {
 }
 
 .desc {
-    border: 1px dashed #365b7f;
+    border: 1px solid #2d4b69;
     padding: 10px;
     line-height: 1.4;
     color: #c7e9f3;
-    min-height: 66px;
+    min-height: 54px;
 }
 
-.pick-state {
-    margin-top: auto;
-    border: 1px solid #355a7d;
-    color: #98c8dc;
-    width: fit-content;
-    padding: 5px 9px;
+.attacks {
+    border: 1px solid #2d4b69;
+    background: rgba(7, 21, 36, 0.5);
+    padding: 8px 10px;
+}
+
+.attacks strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #9ed2f0;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: rgba(4, 26, 48, 0.75);
+}
+
+.attacks ul {
+    margin-left: 16px;
+}
+
+.attacks li {
+    color: #d4ebf8;
+    font-size: 12px;
+}
+
+.pick {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pick:checked + .fighter {
+    border-color: #ffd166;
+    box-shadow: 0 0 0 1px rgba(255, 209, 102, 0.45);
 }
 
 .footer {
@@ -218,29 +223,14 @@ body::before {
     font-size: 13px;
 }
 
-.status {
-    display: grid;
-    align-content: center;
-}
-
-.status-default,
-.status-mago,
-.status-guerreiro {
-    display: none;
-}
-
-.status-default {
-    display: inline;
-}
-
 .actions {
     display: flex;
     gap: 10px;
 }
 
 .btn {
-    border: 2px solid #416f95;
-    background: rgba(10, 30, 52, 0.85);
+    border: 1px solid #416f95;
+    background: rgba(10, 30, 52, 0.6);
     color: #b9def2;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -248,49 +238,15 @@ body::before {
     font-size: 12px;
     padding: 10px 14px;
     cursor: pointer;
-    transition: filter 0.15s ease, border-color 0.15s ease;
+    transition: filter 0.15s ease;
 }
 
 .btn:hover {
     filter: brightness(1.08);
 }
 
-.btn.primary {
-    border-color: var(--gold);
-    color: #ffe9ab;
-    background: rgba(76, 43, 5, 0.7);
-}
-
-#pick-mago:checked + .fighter.mago,
-#pick-guerreiro:checked + .fighter.guerreiro {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 2px rgba(255, 209, 102, 0.35);
-}
-
-#pick-mago:checked + .fighter.mago .pick-state,
-#pick-guerreiro:checked + .fighter.guerreiro .pick-state {
-    color: #ffe9ab;
-    border-color: var(--gold);
-    background: rgba(72, 47, 10, 0.65);
-}
-
-#pick-mago:checked ~ .footer .status-default,
-#pick-guerreiro:checked ~ .footer .status-default {
-    display: none;
-}
-
-#pick-mago:checked ~ .footer .status-mago {
-    display: inline;
-    color: var(--mana);
-}
-
-#pick-guerreiro:checked ~ .footer .status-guerreiro {
-    display: inline;
-    color: var(--danger);
-}
-
 @media (max-width: 900px) {
-    .arena {
+    .players {
         grid-template-columns: 1fr;
     }
 
@@ -300,6 +256,6 @@ body::before {
     }
 
     .actions {
-        flex-direction: column;
+        width: 100%;
     }
 }

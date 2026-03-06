@@ -11,61 +11,97 @@
 <body>
 <main class="screen">
     <div class="top">
-        <h1 class="title">Selecione seu Personagem</h1>
-        <span class="badge">Turno 0: Preparacao</span>
+        <h1 class="title">Selecao Local - 2 Jogadores</h1>
+        <span class="badge">Mesmo Computador</span>
     </div>
 
-    <p class="intro">Escolha uma classe para entrar na arena. Passe o cursor para inspecionar e clique para travar a selecao.</p>
+    <p class="intro">Cada jogador escolhe sua classe e depois confirma para iniciar a partida.</p>
 
     <form class="selection-form" method="post" action="#">
-        <section class="arena">
-            <input class="pick" type="radio" name="personagem" id="pick-mago" value="mago" checked>
-            <label class="fighter mago" for="pick-mago">
-                <span class="chip">Classe Magica</span>
-                <div>
-                    <h2><?= htmlspecialchars((string) ($mago ?? ''))?></h2>
-                    <p class="sub">Tipo: <?= htmlspecialchars((string) ($tipo ?? '')) ?></p>
+        <section class="players">
+            <article class="player">
+                <h2 class="player-title">Jogador 1</h2>
+                <div class="options">
+                    <input class="pick" type="radio" id="p1-mago" name="p1_classe" value="mago" checked>
+                    <label class="fighter mago" for="p1-mago">
+                        <span class="chip">Classe Magica</span>
+                        <h3><?= htmlspecialchars((string) ($mago ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <ul class="stats">
+                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
+                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
+                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBase ?? '')) ?></li>
+                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBase ?? '')) ?></li>
+                        </ul>
+                        <ul class="attacks">
+                            <?php foreach (($ataques ?? []) as $ataque): ?>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </label>
+
+                    <input class="pick" type="radio" id="p1-guerreiro" name="p1_classe" value="guerreiro">
+                    <label class="fighter guerreiro" for="p1-guerreiro">
+                        <span class="chip">Classe Fisica</span>
+                        <h3><?= htmlspecialchars((string) ($guerreiro ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <ul class="stats">
+                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBaseG ?? '')) ?></li>
+                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBaseG ?? '')) ?></li>
+                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBaseG ?? '')) ?></li>
+                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBaseG ?? '')) ?></li>
+                        </ul>
+                        <ul class="attacks">
+                            <?php foreach (($ataquesG ?? []) as $ataque): ?>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </label>
                 </div>
+            </article>
 
-                <ul class="stats">
-                    <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
-                    <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
-                    <li><strong>Attack</strong><?= htmlspecialchars((string) ($atkBase ?? '')) ?></li>
-                    <li><strong>Defesa</strong><?= htmlspecialchars((string) ($defBase ?? '')) ?></li>
-                </ul>
+            <article class="player">
+                <h2 class="player-title">Jogador 2</h2>
+                <div class="options">
+                    <input class="pick" type="radio" id="p2-mago" name="p2_classe" value="mago">
+                    <label class="fighter mago" for="p2-mago">
+                        <span class="chip">Classe Magica</span>
+                        <h3><?= htmlspecialchars((string) ($mago ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <ul class="stats">
+                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
+                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
+                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBase ?? '')) ?></li>
+                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBase ?? '')) ?></li>
+                        </ul>
+                        <ul class="attacks">
+                            <?php foreach (($ataques ?? []) as $ataque): ?>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </label>
 
-                <p class="desc"><?= htmlspecialchars((string) ($descricao ?? '')) ?></p>
-                <span class="pick-state">Selecionar</span>
-            </label>
-
-            <input class="pick" type="radio" name="personagem" id="pick-guerreiro" value="guerreiro">
-            <label class="fighter guerreiro" for="pick-guerreiro">
-                <span class="chip">Classe Fisica</span>
-                <div>
-                    <h2><?= htmlspecialchars((string) ($guerreiro ?? '')?></h2>
-                    <p class="sub">Tipo: <?= htmlspecialchars((string) ($tipoG ?? '')) ?></p>
+                    <input class="pick" type="radio" id="p2-guerreiro" name="p2_classe" value="guerreiro" checked>
+                    <label class="fighter guerreiro" for="p2-guerreiro">
+                        <span class="chip">Classe Fisica</span>
+                        <h3><?= htmlspecialchars((string) ($guerreiro ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <ul class="stats">
+                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBaseG ?? '')) ?></li>
+                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBaseG ?? '')) ?></li>
+                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBaseG ?? '')) ?></li>
+                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBaseG ?? '')) ?></li>
+                        </ul>
+                        <ul class="attacks">
+                            <?php foreach (($ataquesG ?? []) as $ataque): ?>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </label>
                 </div>
-
-                <ul class="stats">
-                    <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBaseG ?? '')) ?></li>
-                    <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBaseG ?? '')) ?></li>
-                    <li><strong>Attack</strong><?= htmlspecialchars((string) ($atkBaseG ?? '')) ?></li>
-                    <li><strong>Defesa</strong><?= htmlspecialchars((string) ($defBaseG ?? '')) ?></li>
-                </ul>
-
-                <p class="desc"><?= htmlspecialchars((string) ($descricaoG ?? '')) ?></p>
-                <span class="pick-state">Selecionar</span>
-            </label>
+            </article>
         </section>
 
         <footer class="footer">
-            <div class="status">
-                <span class="status-default">Nenhum lock confirmado.</span>
-                <span class="status-mago">Classe ativa: Mago.</span>
-                <span class="status-guerreiro">Classe ativa: Guerreiro.</span>
-            </div>
+            <span>Jogador 1 e Jogador 2 escolhem no mesmo teclado.</span>
             <div class="actions">
-                <button class="btn primary" type="submit">Confirmar Selecao</button>
+                <button class="btn primary" type="submit">Iniciar Duelo</button>
             </div>
         </footer>
     </form>

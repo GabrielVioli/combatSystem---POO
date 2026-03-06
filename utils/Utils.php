@@ -2,6 +2,8 @@
 namespace App\utils;
 
 use App\Core\Database;
+//criado pra faciltar a obtenção dos dados do banco e utilizar em SetupController
+
 class Utils {
 
     public function all() {
