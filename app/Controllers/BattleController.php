@@ -2,15 +2,28 @@
 
 namespace App\Controllers;
 
-use App\Core\Database;
+use App\Models\Guerreiro;
+use App\Models\Mago;
 
 class BattleController
 {
     public function show(): void
     {
-        $pdo = Database::connect();
-        $stmt = $pdo->query("SELECT nome FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1");
-        $mago = $stmt->fetch()->nome ?? 'Mago nao encontrado';
+        $mago = Mago::findFirstName() ?? 'Mago nao encontrado';
+        $tipo = Mago::findTipo();
+        $hpBase = Mago::findHpBase();
+        $mpBase = Mago::findMpBase();
+        $atkBase = Mago::findAtkBase();
+        $defBase = Mago::findDefBase();
+        $descricao = Mago::findDesc();
+
+        $guerreiro = Guerreiro::findFirstName() ?? 'Guerreiro nao encontrado';
+        $tipoG = Guerreiro::findTipo();
+        $hpBaseG = Guerreiro::findHpBase();
+        $mpBaseG = Guerreiro::findMpBase();
+        $atkBaseG = Guerreiro::findAtkBase();
+        $defBaseG = Guerreiro::findDefBase();
+        $descricaoG = Guerreiro::findDesc();
 
         require __DIR__ . '/../../views/arena.php';
     }
