@@ -25,16 +25,16 @@
                     <input class="pick" type="radio" id="p1-mago" name="p1_classe" value="mago" checked>
                     <label class="fighter mago" for="p1-mago">
                         <span class="chip">Classe Magica</span>
-                        <h3><?= htmlspecialchars((string) ($mago ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <h3><?= $mago ?? '' ?></h3>
                         <ul class="stats">
-                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
-                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
-                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBase ?? '')) ?></li>
-                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBase ?? '')) ?></li>
+                            <li><strong>HP</strong><?= $hpBase ?? '' ?></li>
+                            <li><strong>MP</strong><?= $mpBase ?? '' ?></li>
+                            <li><strong>ATK</strong><?= $atkBase ?? '' ?></li>
+                            <li><strong>DEF</strong><?= $defBase ?? '' ?></li>
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataques ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                                <li><?= $ataque ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -42,16 +42,16 @@
                     <input class="pick" type="radio" id="p1-guerreiro" name="p1_classe" value="guerreiro">
                     <label class="fighter guerreiro" for="p1-guerreiro">
                         <span class="chip">Classe Fisica</span>
-                        <h3><?= htmlspecialchars((string) ($guerreiro ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <h3><?= $guerreiro ?? '' ?></h3>
                         <ul class="stats">
-                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBaseG ?? '')) ?></li>
-                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBaseG ?? '')) ?></li>
-                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBaseG ?? '')) ?></li>
-                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBaseG ?? '')) ?></li>
+                            <li><strong>HP</strong><?= $hpBaseG ?? '' ?></li>
+                            <li><strong>MP</strong><?= $mpBaseG ?? '' ?></li>
+                            <li><strong>ATK</strong><?= $atkBaseG ?? '' ?></li>
+                            <li><strong>DEF</strong><?= $defBaseG ?? '' ?></li>
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataquesG ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                                <li><?= $ataque ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -64,16 +64,16 @@
                     <input class="pick" type="radio" id="p2-mago" name="p2_classe" value="mago">
                     <label class="fighter mago" for="p2-mago">
                         <span class="chip">Classe Magica</span>
-                        <h3><?= htmlspecialchars((string) ($mago ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <h3><?= $mago ?? '' ?></h3>
                         <ul class="stats">
-                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
-                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
-                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBase ?? '')) ?></li>
-                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBase ?? '')) ?></li>
+                            <li><strong>HP</strong><?= $hpBase ?? '' ?></li>
+                            <li><strong>MP</strong><?= $mpBase ?? '' ?></li>
+                            <li><strong>ATK</strong><?= $atkBase ?? '' ?></li>
+                            <li><strong>DEF</strong><?= $defBase ?? '' ?></li>
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataques ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                                <li><?= $ataque ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -81,16 +81,16 @@
                     <input class="pick" type="radio" id="p2-guerreiro" name="p2_classe" value="guerreiro" checked>
                     <label class="fighter guerreiro" for="p2-guerreiro">
                         <span class="chip">Classe Fisica</span>
-                        <h3><?= htmlspecialchars((string) ($guerreiro ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
+                        <h3><?= $guerreiro ?? '' ?></h3>
                         <ul class="stats">
-                            <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBaseG ?? '')) ?></li>
-                            <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBaseG ?? '')) ?></li>
-                            <li><strong>ATK</strong><?= htmlspecialchars((string) ($atkBaseG ?? '')) ?></li>
-                            <li><strong>DEF</strong><?= htmlspecialchars((string) ($defBaseG ?? '')) ?></li>
+                            <li><strong>HP</strong><?= $hpBaseG ?? '' ?></li>
+                            <li><strong>MP</strong><?= $mpBaseG ?? '' ?></li>
+                            <li><strong>ATK</strong><?= $atkBaseG ?? '' ?></li>
+                            <li><strong>DEF</strong><?= $defBaseG ?? '' ?></li>
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataquesG ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
+                                <li><?= $ataque ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
