@@ -6,11 +6,11 @@ use App\Core\Database;
 
 class Mago extends Personagem
 {
-    public static function findFirstName(): ?string
+    public static function findFirstName()
     {
         return Database::connect()
             ->query("SELECT nome FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->nome ?? null;
+            ->fetch()->nome;
     }
 
     public static function findTipo() {
