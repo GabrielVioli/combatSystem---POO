@@ -25,7 +25,7 @@
                     <input class="pick" type="radio" id="p1-mago" name="p1_classe" value="mago" checked>
                     <label class="fighter mago" for="p1-mago">
                         <span class="chip">Classe Magica</span>
-                        <h3><?= htmlspecialchars((string) ($mago ?? '')) ?></h3>
+                        <h3><?= htmlspecialchars((string) ($mago ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
                         <ul class="stats">
                             <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
                             <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
@@ -34,7 +34,7 @@
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataques ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque) ?></li>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -42,7 +42,7 @@
                     <input class="pick" type="radio" id="p1-guerreiro" name="p1_classe" value="guerreiro">
                     <label class="fighter guerreiro" for="p1-guerreiro">
                         <span class="chip">Classe Fisica</span>
-                        <h3><?= htmlspecialchars((string) ($guerreiro ?? '')) ?></h3>
+                        <h3><?= htmlspecialchars((string) ($guerreiro ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
                         <ul class="stats">
                             <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBaseG ?? '')) ?></li>
                             <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBaseG ?? '')) ?></li>
@@ -51,7 +51,7 @@
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataquesG ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque) ?></li>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -64,7 +64,7 @@
                     <input class="pick" type="radio" id="p2-mago" name="p2_classe" value="mago">
                     <label class="fighter mago" for="p2-mago">
                         <span class="chip">Classe Magica</span>
-                        <h3><?= htmlspecialchars((string) ($mago ?? '')) ?></h3>
+                        <h3><?= htmlspecialchars((string) ($mago ?? ''), ENT_QUOTES, 'UTF-8') ?></h3>
                         <ul class="stats">
                             <li><strong>HP</strong><?= htmlspecialchars((string) ($hpBase ?? '')) ?></li>
                             <li><strong>MP</strong><?= htmlspecialchars((string) ($mpBase ?? '')) ?></li>
@@ -73,7 +73,7 @@
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataques ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque) ?></li>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -90,7 +90,7 @@
                         </ul>
                         <ul class="attacks">
                             <?php foreach (($ataquesG ?? []) as $ataque): ?>
-                                <li><?= htmlspecialchars((string) $ataque) ?></li>
+                                <li><?= htmlspecialchars((string) $ataque, ENT_QUOTES, 'UTF-8') ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </label>
@@ -101,7 +101,7 @@
         <footer class="footer">
             <span>Jogador 1 e Jogador 2 escolhem no mesmo teclado.</span>
             <div class="actions">
-                <button class="btn primary" type="submit">iniciar duelo</button>
+                <button class="btn primary" type="submit">Iniciar Duelo</button>
             </div>
         </footer>
     </form>
