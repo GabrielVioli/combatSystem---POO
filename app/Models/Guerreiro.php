@@ -2,63 +2,74 @@
 
 namespace App\Models;
 
-use App\Core\Database;
+use App\Contracts\CombatenteInterface;
+use App\Exceptions\EnergiaInsuficienteException;
 
-class Guerreiro extends Personagem
+class Guerreiro extends Personagem implements CombatenteInterface
 {
-    public static function findFirstName(): ?string
+    private const HP_BASE = 140;
+    private const MP_BASE = 40;
+    private const ATK_BASE = 18;
+    private const DEF_BASE = 12;
+    private const DESCRICAO = 'Mais HP e DEF, menos MP';
+
+    private const BONUS_DEFESA = 10;
+    private const CUSTO_HABILIDADE = 15;
+    private const MULTIPLICADOR_HABILIDADE = 2;
+
+    public function __construct(string $nome)
     {
-        return Database::connect()
-            ->query("SELECT nome FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->nome ?? null;
+        parent::__construct(
+            $nome,
+            self::HP_BASE,
+            self::MP_BASE,
+            self::ATK_BASE,
+            self::DEF_BASE,
+            'Guerreiro'
+        );
     }
 
-    public static function findTipo()
+    public function atacar(Personagem $alvo): string
     {
-        return Database::connect()
-            ->query("SELECT tipo FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->tipo ?? 'tipo';
+        $danoBruto = $this->getAtaque();
+        $danoFinal = max(0, $danoBruto - $alvo->getDefesa());
+        $alvo->receberDano($danoFinal);
+
+        return "{$this->getNome()} atacou {$alvo->getNome()} e causou {$danoFinal} de dano.";
     }
 
-    public static function findHpBase()
+    public function defender(): string
     {
-        return Database::connect()
-            ->query("SELECT hp_base FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->hp_base ?? 'hp_base';
+        $this->aplicarBonusDefesa(self::BONUS_DEFESA);
+
+        return "{$this->getNome()} esta em posicao defensiva (+" . self::BONUS_DEFESA . " DEF no proximo ataque).";
     }
 
-    public static function findMpBase()
+
+    public function habilidadeEspecial(Personagem $alvo): string
     {
-        return Database::connect()
-            ->query("SELECT mp_base FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->mp_base ?? 'mp_base';
+        if ($this->getMp() < self::CUSTO_HABILIDADE) {
+            throw new EnergiaInsuficienteException("{$this->getNome()} nao tem energia suficiente para o Golpe Giratorio.");
+        }
+
+        $this->setMp($this->getMp() - self::CUSTO_HABILIDADE);
+
+        $danoBruto = (int)($this->getAtaque() * self::MULTIPLICADOR_HABILIDADE);
+        $danoFinal = max(0, $danoBruto - $alvo->getDefesa());
+        $alvo->receberDano($danoFinal);
+
+        return "{$this->getNome()} usou Golpe Giratorio em {$alvo->getNome()} e causou {$danoFinal} de dano!";
     }
 
-    public static function findDefBase()
+    public static function info(): array
     {
-        return Database::connect()
-            ->query("SELECT def_base FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->def_base ?? 'def_base';
-    }
-
-    public static function findDesc()
-    {
-        return Database::connect()
-            ->query("SELECT descricao FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->descricao ?? 'descricao';
-    }
-
-    public static function findAtkBase()
-    {
-        return Database::connect()
-            ->query("SELECT atk_base FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->atk_base ?? 'atk_base';
-    }
-
-    public static function findAtaques(): string
-    {
-        return Database::connect()
-            ->query("SELECT ataques FROM personagens WHERE LOWER(tipo) = 'guerreiro' LIMIT 1")
-            ->fetch()->ataques ?? '[]';
+        return [
+            'classe' => 'Guerreiro',
+            'hp' => self::HP_BASE,
+            'mp' => self::MP_BASE,
+            'atk' => self::ATK_BASE,
+            'def' => self::DEF_BASE,
+            'descricao' => self::DESCRICAO,
+        ];
     }
 }

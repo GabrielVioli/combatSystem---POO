@@ -2,6 +2,49 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/..">
+      <sourceFolder url="file://$MODULE_DIR$/../Microcredenciais---Laravel-Sanctum/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../Microcredenciais---Laravel-Sanctum/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../Microcredenciais---Laravel-Sanctum/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../Microcredenciais---Laravel-Sanctum/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../Microcredenciais---Laravel-Sanctum/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../Microcredenciais---Laravel-Sanctum/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../RiskFlow/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../RiskFlow/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../RiskFlow/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../RiskFlow/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../RiskFlow/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../RiskFlow/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../animesAPI/animesAPI/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../animesAPI/animesAPI/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../animesAPI/animesAPI/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../animesAPI/animesAPI/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../animesAPI/animesAPI/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../animesAPI/animesAPI/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../basicCrud/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../basicCrud/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../basicCrud/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../basicCrud/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../basicCrud/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../basicCrud/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../musclr/Musclr.site/musclr/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../musclr/Musclr.site/musclr/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../musclr/Musclr.site/musclr/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../musclr/Musclr.site/musclr/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../musclr/Musclr.site/musclr/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../musclr/Musclr.site/musclr/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../online/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../online/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../online/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../online/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../online/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../online/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../shop/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/../shop/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/../shop/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/../shop/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/../shop/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../shop/tests/Unit" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/../.git" />
     </content>
     <orderEntry type="inheritedJdk" />

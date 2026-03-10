@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PHPUnit">
+    <option name="directories">
+      <list>
+        <option value="$PROJECT_DIR$/../musclr/Musclr.site/musclr/tests/Unit" />
+        <option value="$PROJECT_DIR$/../musclr/Musclr.site/musclr/tests/Feature" />
+        <option value="$PROJECT_DIR$/../Microcredenciais---Laravel-Sanctum/tests/Unit" />
+        <option value="$PROJECT_DIR$/../Microcredenciais---Laravel-Sanctum/tests/Feature" />
+        <option value="$PROJECT_DIR$/../shop/tests/Unit" />
+        <option value="$PROJECT_DIR$/../shop/tests/Feature" />
+        <option value="$PROJECT_DIR$/../animesAPI/animesAPI/tests/Unit" />
+        <option value="$PROJECT_DIR$/../animesAPI/animesAPI/tests/Feature" />
+        <option value="$PROJECT_DIR$/../basicCrud/tests/Unit" />
+        <option value="$PROJECT_DIR$/../basicCrud/tests/Feature" />
+        <option value="$PROJECT_DIR$/../RiskFlow/tests/Unit" />
+        <option value="$PROJECT_DIR$/../RiskFlow/tests/Feature" />
+        <option value="$PROJECT_DIR$/../online/tests/Unit" />
+        <option value="$PROJECT_DIR$/../online/tests/Feature" />
+      </list>
+    </option>
+  </component>
+</project>

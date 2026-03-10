@@ -2,91 +2,90 @@
 
 namespace App\Models;
 
-
-use App\Core\Database;
-
 abstract class Personagem
 {
+    private string $nome;
+    private int $hp;
+    private int $mp;
+    private int $ataque;
+    private int $defesaBase;
+    private int $defesaBonus = 0;
+    private string $classe;
 
-    protected string $name;
-    protected int $hp_base;
-
-    protected int $atk_base;
-    protected int $mp_base;
-    protected int $def_base;
-    protected string $descricao;
-
-    protected string $tipo;
-
-
-
-    public function getName(): string
+    public function __construct(string $nome, int $hp, int $mp, int $ataque, int $defesaBase, string $classe)
     {
-        return $this->name;
+        $this->nome = $nome;
+        $this->hp = $hp;
+        $this->mp = $mp;
+        $this->ataque = $ataque;
+        $this->defesaBase = $defesaBase;
+        $this->classe = $classe;
     }
 
-    public function setName(string $name): void
+    public function getNome(): string
     {
-        $this->name = $name;
+        return $this->nome;
     }
 
-    public function getHpBase(): int
+    public function getHp(): int
     {
-        return $this->hp_base;
+        return $this->hp;
     }
 
-    public function setHpBase(int $hp_base): void
+    public function setHp(int $hp): void
     {
-        $this->hp_base = $hp_base;
+        $this->hp = max(0, $hp);
     }
 
-    public function getAtkBase(): int
+    public function getMp(): int
     {
-        return $this->atk_base;
+        return $this->mp;
     }
 
-    public function setAtkBase(int $atk_base): void
+    public function setMp(int $mp): void
     {
-        $this->atk_base = $atk_base;
+        $this->mp = max(0, $mp);
     }
 
-    public function getDefBase(): int
+    public function getAtaque(): int
     {
-        return $this->def_base;
+        return $this->ataque;
     }
 
-    public function setDefBase(int $def_base): void
+    public function getDefesa(): int
     {
-        $this->def_base = $def_base;
+        return $this->defesaBase + $this->defesaBonus;
     }
 
-    public function getMpBase(): int
+    public function aplicarBonusDefesa(int $bonus): void
     {
-        return $this->mp_base;
+        $this->defesaBonus = max(0, $bonus);
     }
 
-    public function setMpBase(int $mp_base): void
+    public function limparBonusDefesa(): void
     {
-        $this->mp_base = $mp_base;
+        $this->defesaBonus = 0;
     }
 
-    public function getDescricao(): string
+    public function getClasse(): string
     {
-        return $this->descricao;
+        return $this->classe;
     }
 
-    public function setDescricao(string $descricao): void
+    public function receberDano(int $dano): void
     {
-        $this->descricao = $descricao;
+        $this->hp = max(0, $this->hp - max(0, $dano));
+        $this->limparBonusDefesa();
     }
 
-    public function getTipo(): string
+    public function estaVivo(): bool
     {
-        return $this->tipo;
+        return $this->hp > 0;
     }
 
-    public function setTipo(string $tipo): void
-    {
-        $this->tipo = $tipo;
-    }
+    abstract public function atacar(Personagem $alvo): string;
+
+    abstract public function defender(): string;
+
+    abstract public function habilidadeEspecial(Personagem $alvo): string;
 }

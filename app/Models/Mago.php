@@ -2,57 +2,76 @@
 
 namespace App\Models;
 
-use App\Core\Database;
+use App\Contracts\CombatenteInterface;
+use App\Exceptions\EnergiaInsuficienteException;
 
-class Mago extends Personagem
+class Mago extends Personagem implements CombatenteInterface
 {
-    public static function findFirstName()
+    private const HP_BASE = 90;
+    private const MP_BASE = 80;
+    private const ATK_BASE = 20;
+    private const DEF_BASE = 6;
+    private const DESCRICAO = 'Menos HP, mais MP e dano magico';
+
+    private const CUSTO_HABILIDADE = 20;
+    private const MULTIPLICADOR_HABILIDADE = 2.5;
+    private const MP_RECUPERADO_DEFESA = 10;
+
+    public function __construct(string $nome)
     {
-        return Database::connect()
-            ->query("SELECT nome FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->nome;
+        parent::__construct(
+            $nome,
+            self::HP_BASE,
+            self::MP_BASE,
+            self::ATK_BASE,
+            self::DEF_BASE,
+            'Mago'
+        );
     }
 
-    public static function findTipo() {
-        return Database::connect()
-            ->query("SELECT tipo FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->tipo ?? "tipo";
-    }
-
-    public static function findHpBase() {
-        return Database::connect()
-            ->query("SELECT hp_base FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->hp_base ?? "hp_base";
-    }
-
-    public static function findMpBase() {
-        return Database::connect()
-            ->query("SELECT mp_base FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->mp_base ?? "mp_base";
-    }
-
-    public static function findDefBase() {
-        return Database::connect()
-            ->query("SELECT def_base FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->def_base ?? "def_base";
-    }
-
-    public static function findDesc() {
-        return Database::connect()
-            ->query("SELECT descricao FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->descricao ?? "descricao";
-    }
-
-    public static function findAtkBase() {
-        return Database::connect()
-            ->query("SELECT atk_base FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->atk_base ?? "atk_base";
-    }
-
-    public static function findAtaques(): string
+    public function atacar(Personagem $alvo): string
     {
-        return Database::connect()
-            ->query("SELECT ataques FROM personagens WHERE LOWER(tipo) = 'mago' LIMIT 1")
-            ->fetch()->ataques ?? '[]';
+        $danoBruto = $this->getAtaque();
+        $danoFinal = max(0, $danoBruto - $alvo->getDefesa());
+        $alvo->receberDano($danoFinal);
+
+        return "{$this->getNome()} lancou um projetil magico em {$alvo->getNome()} e causou {$danoFinal} de dano.";
+    }
+
+    public function defender(): string
+    {
+        $this->setMp($this->getMp() + self::MP_RECUPERADO_DEFESA);
+
+        return "{$this->getNome()} concentrou energia e recuperou " . self::MP_RECUPERADO_DEFESA . " de MP.";
+    }
+
+    /**
+     * @throws EnergiaInsuficienteException
+     */
+    public function habilidadeEspecial(Personagem $alvo): string
+    {
+        if ($this->getMp() < self::CUSTO_HABILIDADE) {
+            throw new EnergiaInsuficienteException("{$this->getNome()} nao tem energia suficiente para a Bola de Fogo.");
+        }
+
+        $this->setMp($this->getMp() - self::CUSTO_HABILIDADE);
+
+        $danoBruto = (int)($this->getAtaque() * self::MULTIPLICADOR_HABILIDADE);
+        $danoFinal = max(0, $danoBruto - (int)floor($alvo->getDefesa() / 2));
+        $alvo->receberDano($danoFinal);
+
+        return "{$this->getNome()} lancou Bola de Fogo em {$alvo->getNome()} e causou {$danoFinal} de dano devastador!";
+    }
+
+    public static function info(): array
+    {
+        return [
+            'classe' => 'Mago',
+            'hp' => self::HP_BASE,
+            'mp' => self::MP_BASE,
+            'atk' => self::ATK_BASE,
+            'def' => self::DEF_BASE,
+            'descricao' => self::DESCRICAO,
+        ];
     }
 }
