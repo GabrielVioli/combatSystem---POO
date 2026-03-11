@@ -10,6 +10,6 @@ interface CombatenteInterface
 
     public function defender();
 
-    public function habilidadeEspecial(Personagem $alvo);
+    public function habilidadeEspecial(Personagem $alvo);   
 }
 
